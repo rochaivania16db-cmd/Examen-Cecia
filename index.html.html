@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi página bonita 💗</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #e7d6ff);
+            min-height: 100vh;
+            color: #5b3a50;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 50px;
+        }
+
+        header h1 {
+            font-size: 55px;
+            color: #d94f8a;
+            margin-bottom: 15px;
+            animation: aparecer 1.5s ease;
+        }
+
+        header p {
+            font-size: 20px;
+            color: #76516a;
+            animation: aparecer 2s ease;
+        }
+
+        .corazon {
+            font-size: 45px;
+            animation: latir 1.3s infinite;
+            margin-bottom: 15px;
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.75);
+            width: 280px;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(130, 70, 110, 0.15);
+            transition: 0.4s;
+            backdrop-filter: blur(8px);
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(130, 70, 110, 0.25);
+        }
+
+        .tarjeta h2 {
+            color: #d94f8a;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta p {
+            line-height: 1.6;
+        }
+
+        button {
+            margin-top: 35px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #d94f8a;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(217, 79, 138, 0.3);
+        }
+
+        button:hover {
+            background: #bd3972;
+            transform: scale(1.08);
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d94f8a;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px 30px;
+            color: #76516a;
+        }
+
+        .flor {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            animation: caer linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes latir {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="corazon">💗</div>
+
+        <h1>Un rinconcito bonito</h1>
+
+        <p>
+            Bienvenido/a a este pequeño espacio lleno de colores,
+            flores y cosas bonitas ✨
+        </p>
+
+        <button onclick="mostrarMensaje()">
+            Haz clic aquí 💕
+        </button>
+
+        <div id="mensaje"></div>
+    </header>
+
+
+    <section class="contenedor">
+
+        <div class="tarjeta">
+            <h2>🌸 Cositas lindas</h2>
+            <p>
+                A veces las cosas pequeñas son las que hacen
+                que un día sea mucho más especial.
+            </p>
+        </div>
+
+        <div class="tarjeta">
+            <h2>✨ Sueños</h2>
+            <p>
+                Nunca dejes de imaginar, crear y perseguir
+                todas esas cosas que te hacen feliz.
+            </p>
+        </div>
+
+        <div class="tarjeta">
+            <h2>🦋 Momentos</h2>
+            <p>
+                Guarda los momentos bonitos, sonríe mucho
+                y disfruta cada pequeño instante.
+            </p>
+        </div>
+
+    </section>
+
+
+    <footer>
+        Hecho con 💗 y un poquito de magia ✨
+    </footer>
+
+
+    <script>
+        function mostrarMensaje() {
+            const mensaje = document.getElementById("mensaje");
+
+            mensaje.textContent = "¡Espero que hoy tengas un día precioso! 🌷💗";
+
+            crearFlores();
+        }
+
+        function crearFlores() {
+
+            const flores = ["🌸", "🌷", "💗", "✨", "🦋"];
+
+            for (let i = 0; i < 15; i++) {
+
+                const flor = document.createElement("div");
+
+                flor.classList.add("flor");
+
+                flor.textContent =
+                    flores[Math.floor(Math.random() * flores.length)];
+
+                flor.style.left = Math.random() * 100 + "vw";
+
+                flor.style.animationDuration =
+                    (3 + Math.random() * 4) + "s";
+
+                document.body.appendChild(flor);
+
+                setTimeout(() => {
+                    flor.remove();
+                }, 7000);
+            }
+        }
+    </script>
+
+</body>
+</html>
